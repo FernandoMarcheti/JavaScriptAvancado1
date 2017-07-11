@@ -10,13 +10,18 @@ class NegociacaoController {
 
 		this._negociacaoView = new NegociacoesView($('#negociacoesView'));
 		this._negociacaoView.update(this._negociacoes.negociacoes);
+
+		this._mensagem = new Mensagem();
+		this._mensagemView = new MensagemView($('#mensagemView'));
 	}
 
 	adiciona(event){
 		event.preventDefault();
 		
 		this._negociacoes.adiciona(this._criaNegociacao());	
-		this._negociacaoView.update(this._negociacoes.negociacoes);	
+		this._negociacaoView.update(this._negociacoes.negociacoes);
+		this._mensagem.texto = 'Negociação adicionada com sucesso';
+		this._mensagemView.update(this._mensagem);
 		this._limparFormulario();
 
 		console.log(this._negociacoes);
